@@ -1,6 +1,5 @@
 package uk.ac.tees.s3603702.personalexpensetracker.ui.screens
 
-import android.window.SplashScreen
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*

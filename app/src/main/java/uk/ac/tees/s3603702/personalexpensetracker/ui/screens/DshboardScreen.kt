@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import uk.ac.tees.s3603702.personalexpensetracker.navigation.Screen
 
 @Composable
 fun DashboardScreen(navController: NavController) {
@@ -26,12 +27,12 @@ fun DashboardScreen(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(21.dp))
         Button(onClick = {
-            navController.navigate("add")
+            navController.navigate(Screen.AddExpense.route )
         }) {
             Text("Add Expenses")
         }
         Button(onClick = {
-            navController.navigate("list")
+            navController.navigate(Screen.ExpenseList.route )
         }) {
             Text("View Expenses")
         }

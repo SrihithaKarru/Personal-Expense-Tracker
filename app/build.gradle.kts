@@ -1,9 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+
 }
 
 android {
+    buildFeatures {
+        compose = true
+    }
     namespace = "uk.ac.tees.s3603702.personalexpensetracker"
     compileSdk {
         version = release(36) {
@@ -40,6 +44,12 @@ android {
 }
 
 dependencies {
+
+
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -57,3 +67,5 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
+
+private fun kapt(string: Provider<MinimalExternalModuleDependency>) {}

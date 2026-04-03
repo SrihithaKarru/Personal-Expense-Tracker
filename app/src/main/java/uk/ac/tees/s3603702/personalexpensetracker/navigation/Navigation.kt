@@ -2,11 +2,12 @@ package uk.ac.tees.s3603702.personalexpensetracker.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-import uk.ac.tees.s3603702.personalexpensetracker.AddExpenseScreen
-import uk.ac.tees.s3603702.personalexpensetracker.ExpenseListScreen
+import uk.ac.tees.s3603702.personalexpensetracker.ui.screens.AddExpenseScreen
+import uk.ac.tees.s3603702.personalexpensetracker.ui.screens.ExpenseListScreen
 import androidx.navigation.compose.NavHost
 import androidx. navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import uk.ac.tees.s3603702.personalexpensetracker.ui.screens.EditExpenseScreen
 import uk.ac.tees.s3603702.personalexpensetracker.ExpenseDao
 
 @Composable 
@@ -17,13 +18,17 @@ fun Navigation(
     val navController = rememberNavController()
     NavHost (
         navController = navController,
-        startDestination = Screen.Splash.route
+        startDestination = Screen.ExpenseList.route
     ){
         composable(Screen.AddExpense.route){
             AddExpenseScreen(navController, dao)
         }
         composable(Screen.ExpenseList.route){
-            ExpenseListScreen(dao)
+            ExpenseListScreen(navController,dao)
+        }
+        composable ("edit/{id}" ) {backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")?.toInt() ?: 0
+            EditExpenseScreen(navController, dao, id )
         }
     }
 }
